@@ -1,6 +1,25 @@
 import { SiteMeta } from '~/components/meta'
+import Events from '~/components/events'
+import { getAllPosts } from '~/lib/api'
 
-export default function Page() {
+// eslint-disable-next-line @typescript-eslint/require-await
+export const getStaticProps = async () => {
+  const allPosts = getAllPosts([
+    'title',
+    'date',
+    'slug',
+    'author',
+    'coverImage',
+    'excerpt',
+  ])
+
+  return {
+    props: { allPosts },
+  }
+}
+
+export default function Index({ allPosts }: { allPosts: never[] }) {
+  const morePosts = allPosts
   const dateParts =
     process.env.NEXT_PUBLIC_LAST_UPDATED_AT?.split('-').map(Number) ?? []
   const year = dateParts[0] ?? 0
@@ -14,26 +33,43 @@ export default function Page() {
 
       <header>
         <div>
-          <h1>Ohio for Palestine</h1>
+          <h1 className='text-7xl font-semibold tracking-tighter'>
+            Ohio <span className='font-light'>for</span> Palestine
+          </h1>
 
-          {process.env.NEXT_PUBLIC_LAST_UPDATED_AT && (
-            <span>
-              Last updated on{' '}
-              <time dateTime={dateObj.toISOString()}>
-                {dateObj.toLocaleString('en-US', {
-                  timeZone: 'America/New_York',
-                  month: 'short',
-                  day: 'numeric',
-                })}
-              </time>
-            </span>
-          )}
+          <p className='text-base font-normal'>
+            Events and resources for Ohioans in solidarity with Palestinian
+            justice.{' '}
+            {process.env.NEXT_PUBLIC_LAST_UPDATED_AT && (
+              <span>
+                Last updated on{' '}
+                <time
+                  dateTime={dateObj.toISOString()}
+                  title={dateObj.toLocaleString('en-US', {
+                    timeZone: 'America/New_York',
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric',
+                  })}
+                >
+                  {dateObj.toLocaleString('en-US', {
+                    timeZone: 'America/New_York',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </time>
+                .
+              </span>
+            )}
+          </p>
         </div>
       </header>
 
       <div>filter</div>
 
-      <main className='main'>main content</main>
+      <main className='main'>
+        <Events posts={morePosts} />
+      </main>
 
       <footer>
         <p>footer</p>
