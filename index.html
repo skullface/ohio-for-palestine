@@ -1,0 +1,56 @@
+---
+layout: default
+slug: "/"
+last_modified: 3 June 2020
+---
+
+<section class="events" id="events">
+  
+  {% assign regions = site.events | map: 'region' | uniq %}
+  {% for region in regions %}
+    <h2>{{ region }}</h2>
+    {% assign events_by_region = site.events | where: "region", region | sort: "date" %}
+    <div>
+      {% for event in events_by_region %}
+        <article class="event">
+          <h3 class="event__title">
+            {{ event.title }}
+          </h3>
+          <p>
+            {{ event.location }}
+          </p>
+          <p>
+            <time datetime="{{ event.date }}">{{ event.date | date: "%B %-d, %Y at %-I:%M %p" }}</time>
+          </p>
+          <div class="event__content">
+            {{ event.content }}
+          </div>
+          {% if event.organizer %}
+            <div>
+              <h4>Organized by</h4>
+              <ul>
+                {% for organizer in event.organizer %}
+                  <li>{{ organizer }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  {% endfor %}
+</section>
+
+<section class="social-media" id="social-media">
+  <h1 class="Post__title">
+    Share
+  </h1>
+  {% include share.html %}
+</section>
+
+<section class="resources" id="resources">
+  <h1 class="Post__title">
+    More resources
+  </h1>
+  {% include resources.html %}
+</section>

@@ -1,0 +1,29 @@
+title: Ohio for Palestine
+description: >-
+  Events and resources for Ohioans in solidarity with Palestinian justice.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+locale: en-US
+timezone: "America/New_York"
+
+# Build settings
+plugins:
+  - jekyll-feed
+
+permalink: /:title
+
+sass:
+  style: compressed
+
+exclude:
+  - LICENSE.md
+  - README.md
+
+# Content grouping
+collections:
+  events:
+    output: true
+    permalink: /:name/
+  resources:
+    output: true
+    permalink: /resources/:name/
