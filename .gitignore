@@ -1,12 +1,11 @@
-# misc
+# macos
 .DS_Store
+
+# jekyll
+_site
+.sass-cache
+.jekyll-metadata
 
 # debug
 *.log
 
-# next.js 
-/node_modules
-*.tsbuildinfo
-next-env.d.ts
-/dist
-.next
