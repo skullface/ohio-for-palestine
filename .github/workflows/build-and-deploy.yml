@@ -1,33 +1,32 @@
-name: Static site build
-
+name: Build Jekyll site
 on:
-  workflow_dispatch:
-
+  push:
+    branches: ["main"]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: npm
-      - name: Get build date
-        id: date-get
-        run: |
-          echo "BUILD_DATE=$(TZ=America/New_York date +%Y-%m-%d)" >> $GITHUB_ENV
-      - name: Print build date
-        id: date-print
-        run: |
-          echo ${{ env.BUILD_DATE }} >> .last-updated
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
       - name: Build
-        run: |
-          npm ci
-          npm run build
-          touch dist/.nojekyll
-          echo "ohiopalestine.com" >> dist/CNAME
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.4.3
+        uses: actions/jekyll-build-pages@v1
         with:
-          branch: gh-pages
-          folder: dist
+          future: true
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
