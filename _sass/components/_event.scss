@@ -1,0 +1,38 @@
+.events__region {
+  display: inline-block;
+  font-family: 'source-code-variable', 'ui-monospace', 'SFMono-Regular', 'SF Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'monospace';
+  text-transform: uppercase;
+  font-size: 1em;
+  padding: 8px 10px;
+  border-radius: 4px;
+  margin-bottom: 2em;
+  line-height: 1;
+  background-color: #D20000;
+  color: #ebe4d7;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.events {
+  display: flex;
+  flex-direction: column;
+  gap: 4em;
+}
+
+.events__list {
+  display: flex;
+  background-color: azure;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.events__group:nth-of-type(odd) .events__region {
+  background-color: #0D7009;
+}
+
+.event__title {
+  font-size: 2em;
+  color: #000;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+  line-height: 1.1;
+}
