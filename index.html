@@ -20,7 +20,7 @@ last_modified: 3 June 2020
               <time datetime="{{ event.date }}">{{ event.date | date: "%B %-d, %Y at %-I:%M %p" }}</time>
             </p>
             <p>
-              {{ event.location }}
+              {{ event.location }} (<a><a href="https://www.google.com/maps/search/?api=1&query={{ event.location | url_encode }}+{{ event.region | url_encode }}+ohio" target="_blank">Google Maps</a>)
             </p>
             <div class="event__content">
               {{ event.content }}
