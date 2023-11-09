@@ -2,6 +2,7 @@ html {
   font-family: 
   'aktiv-grotesk', '-apple-system', 'BlinkMacSystemFont', 'Noto Sans', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
   background-color: #ebe4d7;
+  text-wrap: pretty;
 }
 
 body {
@@ -12,4 +13,11 @@ body {
   html {
     background-color: #ebe4d7;
   }
+}
+
+.site,
+.site__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 }

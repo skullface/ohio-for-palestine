@@ -1,10 +1,42 @@
-.site__header {
+.site__header,
+.site__footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 0.5em;
+}
+
+.site__header img {
+  width: 64px;
+  height: 64px;
 }
 
 .site__title {
-  font-size: 7em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.site__title h1 {
   font-weight: 600;
-  line-height: 1;
+  font-size: 3em;
+  line-height: 0.9;
   color: #000;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.05em;
+}
+
+@media (min-width: 768px) {
+  .site__title h1 {
+    font-size: 5em;
+    letter-spacing: -0.07em;
+  }
+}
+
+.site__footer a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
 }
