@@ -1,8 +1,11 @@
 .events__region {
   display: inline-block;
-  font-family: 'source-code-variable', 'ui-monospace', 'SFMono-Regular', 'SF Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'monospace';
-  font-size: 1.5em;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  font-size: 1.25em;
   line-height: 1.25;
+  color: #3e3c38;
+  text-shadow: 0 1px 0 #fff;
 }
 
 .events {
@@ -69,8 +72,10 @@
 }
 
 .event__title a {
-  color: #000;
-  text-decoration: none;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: #c7c2b8;
+  transition: all 300ms ease-in-out;
 }
 
 .event:nth-child(odd) .event__title a {
@@ -83,6 +88,10 @@
   
 .event:nth-child(3n+3) .event__title a {
   color: #0D7009;
+}
+
+.event .event__title a:hover {
+  text-decoration-color: inherit;
 }
 
 .event__info {
@@ -119,7 +128,7 @@
 }
 
 .event__organizers:before {
-  content: "———";
+  content: "——";
   position: absolute;
   color: #c7c2b8;
   top: -2px;
@@ -136,9 +145,9 @@
   margin: 0 4px;
 }
 
-.event__cta,
 .event__info .google-maps {
   text-decoration-color: #c7c2b8;
+  transition: all 300ms ease-in-out;
 }
 
 .event__info .google-maps:hover {
