@@ -1,5 +1,5 @@
 ---
-title: "Shut it down for Palestine! protest"
+title: "Shut it down for Palestine! Columbus protest"
 location: "200 N. High St"
 region: "Columbus"
 organizer:

@@ -1,5 +1,5 @@
 ---
-title: "Shut it down for Palestine! protest"
+title: "Shut it down for Palestine! Cleveland protest"
 location: "W. 25th Market Square"
 region: "Cleveland"
 organizer:
