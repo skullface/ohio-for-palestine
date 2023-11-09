@@ -6,7 +6,13 @@ html {
 }
 
 body {
-  padding: 2rem;
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 3em;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
