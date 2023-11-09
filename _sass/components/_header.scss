@@ -36,7 +36,12 @@
 }
 
 .site__footer a {
-  text-decoration: none;
+  text-decoration-color: #c7c2b8;
   color: #000;
   font-weight: 500;
+  transition: all 300ms ease-in-out;
+}
+
+.site__footer a:hover {
+  text-decoration-color: inherit;
 }
