@@ -1,11 +1,15 @@
 ---
-title: "Shut it down"
-location: "W 25th"
+title: "Shut it down for Palestine!"
+location: "W. 25th Market Square"
 region: "Cleveland"
 organizer:
-  - "ANSWER"
+  - "PSL NE Ohio"
+  - "PYM"
+  - "Al Awda Ohio"
+  - "CWRU SJP"
+  - "CSU SJP"
+  - "USPCN"
   - "PEPS Lakewood"
+link: "https://www.instagram.com/p/CzWxQYlpvgH/"
 date: "2023-11-09T17:00:00"
 ---
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget.
