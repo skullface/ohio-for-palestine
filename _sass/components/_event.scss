@@ -1,4 +1,4 @@
-.events__region {
+.events__group-title {
   display: inline-block;
   font-weight: 700;
   letter-spacing: -0.04em;
@@ -74,8 +74,6 @@
 .event__title a {
   text-underline-offset: 2px;
   text-decoration-thickness: 1px;
-  text-decoration-color: #c7c2b8;
-  transition: all 300ms ease-in-out;
 }
 
 .event:nth-child(odd) .event__title a {
@@ -146,11 +144,24 @@
   margin: 0 4px;
 }
 
-.event__info .google-maps {
-  text-decoration-color: #c7c2b8;
-  transition: all 300ms ease-in-out;
-}
-
-.event__info .google-maps:hover {
-  text-decoration-color: #000;
+.events__past__list {
+  margin: 0.25rem 0 0 0rem;
+  padding-left: 0rem;
+  
+  a {
+    font-weight: 500;
+    color: inherit;
+  }
+  
+  .location {
+    color: #605e59;
+  }
+  
+  li {
+    margin-bottom: 0.25rem;
+  
+    &::marker {
+      color: #c7c2b8;
+    }
+  }
 }

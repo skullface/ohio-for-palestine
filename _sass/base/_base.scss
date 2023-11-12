@@ -27,3 +27,12 @@ body {
   flex-direction: column;
   gap: 4rem;
 }
+
+a {
+  text-decoration-color: #c7c2b8;
+  transition: all 300ms ease-in-out;
+  
+  &:hover {
+    text-decoration-color: inherit;
+  }
+}
