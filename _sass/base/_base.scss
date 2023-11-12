@@ -36,3 +36,40 @@ a {
     text-decoration-color: inherit;
   }
 }
+
+ul {
+  margin: 0.25rem 0 0 0rem;
+  padding-left: 0rem;
+  
+  a {
+    font-weight: 500;
+    color: inherit;
+  }
+}
+
+li {
+  margin-bottom: 0.25rem;
+
+  &::marker {
+    color: #c7c2b8;
+  }
+}
+
+h2,
+h3 {
+  letter-spacing: -0.04em;
+  line-height: 1.25;
+  color: #3e3c38;
+  text-shadow: 0 1px 0 #fff;
+}
+
+h2 {
+  font-size: 1.625em;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.25em;
+  font-weight: 600;
+  color: #000;
+}
