@@ -1,5 +1,5 @@
 ---
-title: "Candlelight vigil"
+title: "Student candlelight vigil"
 location: "Kent State University"
 region: "Akron"
 organizer:

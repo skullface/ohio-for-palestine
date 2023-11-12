@@ -1,5 +1,5 @@
 ---
-title: "Stand with Palestine march"
+title: "Stand with Palestine student march"
 location: "The Ohio State University"
 region: "Columbus"
 organizer:

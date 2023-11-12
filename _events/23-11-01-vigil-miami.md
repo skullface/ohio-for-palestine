@@ -1,5 +1,5 @@
 ---
-title: "Vigil for Palestine"
+title: "Student vigil for Palestine"
 location: "Miami University"
 region: "Cincinnati"
 organizer:
