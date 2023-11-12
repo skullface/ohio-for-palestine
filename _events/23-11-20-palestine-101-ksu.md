@@ -1,5 +1,5 @@
 ---
-title: "Palestine 101"
+title: "Palestine 101 for students"
 location: "Kent State University"
 region: "Akron"
 organizer:
