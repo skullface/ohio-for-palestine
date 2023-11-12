@@ -5,36 +5,54 @@ last_modified: 3 June 2020
 ---
 
 <section class="events" id="events">
+  {% assign current_time = site.time %}
   {% assign regions = site.events | map: 'region' | uniq %}
   {% for region in regions %}
     <div class="events__group">
-      <h2 class="events__region">Upcoming events in {{ region }}</h2>
+      <h2 class="events__group-title">Upcoming events in {{ region }}</h2>
       <div class="events__list">
         {% assign events_by_region = site.events | where: "region", region | sort: "date" %}
         {% for event in events_by_region %}
-          <article class="event">
-            <div class="event__info">
-              <h3 class="event__title"><a href="{{ event.link }}">{{ event.title }}</a></h3>
-              <p class="event__date"><time datetime="{{ event.date }}">{{ event.date | date: "%A, %b %-d, %Y" }}</time> at <time datetime="{{ event.date }}">{{ event.date | date: "%-I:%M %p" }}</time></p>
-              <p class="event__location"><span class="location">{{ event.location }}</span> (<a href="https://www.google.com/maps/search/?api=1&query={{ event.location | url_encode }}+{{ event.region | url_encode }}+ohio" class="google-maps" target="_blank">Google Maps</a>)</p>
-            </div>
-            <p class="event__details">
-              {% if event.organizer %}
-              <span class="event__organizers">
-                Organized by
-                {% for organizer in event.organizer %}
-                  <span class="event__organizer">{{ organizer }}</span>{% unless forloop.last %}, {% endunless %}
-                {% endfor %}
-              </span>
-              {% endif %}
-              {% if event.description %}
-                <span class="separator" aria-hidden="true">·</span> <span class="event__description">{{ event.description }}</span>
-              {% endif %}
-            </p>
-          </article>
+          {% if event.date > current_time %}
+            <article class="event">
+              <div class="event__info">
+                <h3 class="event__title"><a href="{{ event.link }}">{{ event.title }}</a></h3>
+                <p class="event__date"><time datetime="{{ event.date }}">{{ event.date | date: "%A, %b %-d, %Y" }}</time> at <time datetime="{{ event.date }}">{{ event.date | date: "%-I:%M %p" }}</time></p>
+                <p class="event__location"><span class="location">{{ event.location }}</span> (<a href="https://www.google.com/maps/search/?api=1&query={{ event.location | url_encode }}+{{ event.region | url_encode }}+ohio" class="google-maps" target="_blank">Google Maps</a>)</p>
+              </div>
+              <p class="event__details">
+                {% if event.organizer %}
+                <span class="event__organizers">
+                  Organized by
+                  {% for organizer in event.organizer %}
+                    <span class="event__organizer">{{ organizer }}</span>{% unless forloop.last %}, {% endunless %}
+                  {% endfor %}
+                </span>
+                {% endif %}
+                {% if event.description %}
+                  <span class="separator" aria-hidden="true">·</span> <span class="event__description">{{ event.description }}</span>
+                {% endif %}
+              </p>
+            </article>
+          {% endif %}
         {% endfor %}
       </div>
     </div>
   {% endfor %}
 </section>
 
+<section class="events__past" id="past-events">
+  <h2 class="events__group-title">Past events</h2>
+  <ul class="events__past__list">
+    {% assign current_time = site.time %}
+    {% assign past_events = site.events | where_exp: "event", "event.date < current_time" | sort: "date" | reverse %}
+    
+    {% for event in past_events %}
+      {% if event.date < current_time %}
+        <li>
+          <time datetime="{{ event.date }}">{{ event.date | date: "%A, %b %-d, %Y" }}</time>: <a href="{{ event.link }}">{{ event.title }}</a> <span class="location">({{ event.region }})</span>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</section>
