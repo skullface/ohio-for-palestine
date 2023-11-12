@@ -7,13 +7,16 @@ last_modified: 3 June 2020
 <section class="events" id="events">
   {% assign current_time = site.time %}
   {% assign regions = site.events | map: 'region' | uniq %}
+
   {% for region in regions %}
-    <div class="events__group">
-      <h2 class="events__group-title">Upcoming events in {{ region }}</h2>
-      <div class="events__list">
-        {% assign events_by_region = site.events | where: "region", region | sort: "date" %}
-        {% for event in events_by_region %}
-          {% if event.date > current_time %}
+    {% assign events_by_region = site.events | where: "region", region | sort: "date" %}
+    {% assign upcoming_events_by_region = events_by_region | where_exp: "event", "event.date > current_time" %}
+    
+    {% if upcoming_events_by_region.size > 0 %}
+      <div class="events__group">
+        <h2 class="events__group-title">Upcoming events in {{ region }}</h2>
+        <div class="events__list">
+          {% for event in upcoming_events_by_region %}
             <article class="event">
               <div class="event__info">
                 <h3 class="event__title"><a href="{{ event.link }}">{{ event.title }}</a></h3>
@@ -34,15 +37,15 @@ last_modified: 3 June 2020
                 {% endif %}
               </p>
             </article>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </div>
+          {% endfor %}
+        </div>
+     </div>
+    {% endif %}
   {% endfor %}
 </section>
 
 <section class="events__past" id="past-events">
-  <h2 class="events__group-title">Past events</h2>
+  <h2 class="events__group-title">Past events (Since Nov 1, 2022)</h2>
   <ul class="events__past__list">
     {% assign current_time = site.time %}
     {% assign past_events = site.events | where_exp: "event", "event.date < current_time" | sort: "date" | reverse %}
